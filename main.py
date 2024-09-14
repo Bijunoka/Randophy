@@ -1,4 +1,5 @@
-from flask import Flask, session, redirect, request
+from flask import Flask, session, redirect, request, send_from_directory
+
 from flask_session import Session
 from redis import Redis
 from urllib.parse import urlencode
@@ -52,10 +53,9 @@ def callback():
     
     return redirect("/")
 
-@app.route("/")
-def page():
-    if "access_token" not in session:
-        return redirect("/login")
-    return "You are logged in"
+@app.route('/', defaults={'filename': 'index.html'})
+@app.route('/<path:filename>')
+def serve_static(filename):
+    return send_from_directory('static', filename)
 
 app.run(host="0.0.0.0", port=5000)
