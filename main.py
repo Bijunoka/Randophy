@@ -10,6 +10,7 @@ from time import time
 
 CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
 CLIENT_ID = os.environ.get("CLIENT_ID")
+URL = os.environ.get("URL")
 
 app = Flask(__name__)
 
@@ -22,7 +23,7 @@ parms = {
     "response_type" : "code",
     "client_id" : CLIENT_ID,
     "scope" : "playlist-modify-private user-read-recently-played",
-    "redirect_uri" : "http://localhost:5000/callback",
+    "redirect_uri" : URL + "/callback",
 }
 
 query = urlencode(parms)
@@ -45,7 +46,7 @@ def callback():
     data_token = {
         "grant_type": "authorization_code",
         "code": code,
-        "redirect_uri": "http://localhost:5000/callback",
+        "redirect_uri": URL + "/callback",
     }
     r = post(url_token, headers=headers_token, data=data_token).json()
     if "access_token" not in r or "refresh_token" not in r:
