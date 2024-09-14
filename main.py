@@ -58,4 +58,29 @@ def callback():
 def serve_static(filename):
     return send_from_directory('static', filename)
 
+@app.route("/recommendations")
+def recommendations():
+    return api_requests("recommendations")
+
+@app.route("/recently-played")
+def recently_played():
+    return api_requests("me/player/recently-played")
+
+@app.route("/search")
+def search():
+    return api_requests("search")
+
+@app.route("/<user_id>/playlists")
+def user_playlists(user_id):
+    return api_requests("users/" + user_id + "/playlists")
+    
+def api_requests(url):
+    args = request.args()
+    url = "https://api.spotify.com/v1/" + url + "?" + urlencode(args)
+    headers = {
+        "Authorization": "Bearer " + session["access_token"]
+    }
+    r = get(url, headers=headers).json()
+    return r
+
 app.run(host="0.0.0.0", port=5000)
