@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Comfortaa', cursive;
-    background-color: #121212;
+    background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.815));;
     color: #ffffff;
     padding: 0.25% 1% 0 1%;
 }
