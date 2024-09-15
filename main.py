@@ -14,6 +14,8 @@ CLIENT_ID = os.environ.get("CLIENT_ID")
 URL = os.environ.get("URL")
 APP_AUTH = "Basic " + base64.b64encode((CLIENT_ID + ":" + CLIENT_SECRET).encode()).decode()
 
+DEFAULT_URL = "https://api.spotify.com/v1/"
+
 app = Flask(__name__)
 
 SESSION_TYPE = 'redis'
@@ -44,7 +46,7 @@ def callback():
         "code": code,
         "redirect_uri": URL + "/callback",
     }
-    response = post(url, headers=headers_token, data=data).json()
+    response = post(url, headers=headers, data=data).json()
     if "access_token" not in response or "refresh_token" not in response:
         return redirect("/")
     session["access_token"] = response["access_token"]
@@ -58,19 +60,23 @@ def serve_static(filename):
 
 @app.route("/recommendations")
 def recommendations():
-    return api_requests("recommendations")
+    return api_requests(DEFAULT_URL + "recommendations")
 
 @app.route("/recently-played")
 def recently_played():
-    return api_requests("me/player/recently-played")
+    return api_requests(DEFAULT_URL + "me/player/recently-played")
 
 @app.route("/search")
 def search():
-    return api_requests("search")
+    return api_requests(DEFAULT_URL + "search")
 
 @app.route("/<user_id>/playlists")
 def user_playlists(user_id):
-    return api_requests("users/" + user_id + "/playlists")
+    return api_requests(DEFAULT_URL + "users/" + user_id + "/playlists")
+
+@app.route("/oembed")
+def oembed():
+    return api_requests("https://open.spotify.com/oembed")
 
 def api_requests(url, nbr=1):
     # Rate limiting
@@ -89,7 +95,7 @@ def api_requests(url, nbr=1):
         return {"error": "not logged in"}
     
     # Make the request to the Spotify API
-    url = "https://api.spotify.com/v1/" + url + "?" + urlencode(request.args)
+    url = url + "?" + urlencode(request.args)
     response = get(url, headers={"Authorization": "Bearer " + session["access_token"]}).json()
 
     # Refresh token if needed
