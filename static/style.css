@@ -9,11 +9,9 @@ body {
 
 .navbar {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+    overflow:hidden;
     background-color: #000;
-    border-radius: 1.5vw;
+    border-radius: 12px;
 }
 
 .a-nav {
@@ -22,8 +20,11 @@ body {
     text-align: center;
     text-decoration: none;
     font-size: 3vh;
-    padding: 1%;
+    height: 3em; /* hauteur du parent */
+    line-height: 3em; /* hauteur de ligne (identique) */
+    padding: 0 1em 0 1em;
     float: left;
+    transition: transform .2s;
 }
 
 .cred-element {
@@ -35,7 +36,9 @@ body {
     padding-top: 1%;
     font-size: 2em;
 }
-
+.description {
+    padding-bottom: 1em;
+}
 .credits {
     list-style-type: none;
     padding-top: 0.25%;
@@ -53,8 +56,8 @@ body {
 
 .login_button {
     float: right;
-    padding: 2vh;
-    padding-right: 3vh;
+    
+    padding-right: 3em;
 
 }
 
@@ -65,6 +68,7 @@ body {
 /* Change the link color to #111 (black) on hover */
 li a:hover {
     background-color: #111;
+    transform: scale(1.05);
 }
 
 .centre {
@@ -73,10 +77,9 @@ li a:hover {
 }
 
 .logo {
-    height: 3.25vh;
-    width: 3.25vh;
-    padding-right: 2vh;
-    text-align: center;
+
+    padding: 0.5em 1em 0.5em 0em;
+    text-align: center; */
 }
 
 
