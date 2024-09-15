@@ -2,37 +2,84 @@
 
 body {
     font-family: 'Comfortaa', cursive;
+    background-color: #121212;
+    color: #ffffff;
+    padding: 0.25% 1% 0 1%;
 }
 
-
-ul {
+.navbar {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #000;
+    border-radius: 1.5vw;
 }
 
-li {
-    float: left;
-}
-
-li a {
+.a-nav {
     display: flex;
     color: white;
     text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
+    font-size: 3vh;
+    padding: 1%;
+    float: left;
 }
+
+.cred-element {
+    padding-top: 0.5%;
+}
+
+.credit-title {
+    padding-left: 1%;
+    padding-top: 1%;
+    font-size: 2em;
+}
+
+.credits {
+    list-style-type: none;
+    padding-top: 0.25%;
+}
+
+.credit-link {
+    color: #ffffff;
+    text-decoration: none;  
+}
+
+.credit-link:hover {
+    color: #ffffffce;
+    text-decoration: solid;
+}
+
+.login_button {
+    float: right;
+    padding: 2vh;
+    padding-right: 3vh;
+    
+}
+.login_button:hover {
+    background-color: #111;
+}  
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
     background-color: #111;
 }
-login_button {
-    position: right;
+
+.centre {
+    padding-left: 3%;
+    padding-top: 1%;
 }
+
+.logo {
+    height: 3.25vh;
+    width: 3.25vh;
+    padding-right: 2vh;
+    text-align: center;
+}
+
+
 .construction {
-  position: center;
-  width: 300px;
+    padding: 2.5% 0;
+    font-size: 8vh;
 }
