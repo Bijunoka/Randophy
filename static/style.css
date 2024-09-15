@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Comfortaa', cursive;
-    background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.815));;
+    background-color: #121212;
     color: #ffffff;
     padding: 0.25% 1% 0 1%;
 }
@@ -43,7 +43,7 @@ body {
 
 .credit-link {
     color: #ffffff;
-    text-decoration: none;  
+    text-decoration: none;
 }
 
 .credit-link:hover {
@@ -55,11 +55,12 @@ body {
     float: right;
     padding: 2vh;
     padding-right: 3vh;
-    
+
 }
+
 .login_button:hover {
     background-color: #111;
-}  
+}
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
