@@ -78,6 +78,10 @@ def user_playlists(user_id):
 def oembed():
     return api_requests("https://open.spotify.com/oembed")
 
+@app.route("/me")
+def me():
+    return api_requests(DEFAULT_URL + "me")
+
 def api_requests(url, nbr=1):
     # Rate limiting
     if "times" not in session:
