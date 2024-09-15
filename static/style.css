@@ -74,6 +74,7 @@ li a:hover {
 .centre {
     padding-left: 3%;
     padding-top: 1%;
+    height: 100vh;
 }
 
 .logo {
