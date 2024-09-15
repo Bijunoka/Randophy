@@ -100,7 +100,9 @@ def api_requests(url, nbr=1):
     
     # Make the request to the Spotify API
     url = url + "?" + urlencode(request.args)
-    response = get(url, headers={"Authorization": "Bearer " + session["access_token"]}).json()
+    response = get(url, headers={"Authorization": "Bearer " + session["access_token"]})
+    print(response.content)
+    response = response.json()
 
     # Refresh token if needed
     if nbr > 0 and "error" in response and response["error"]["message"] == "The access token expired":
